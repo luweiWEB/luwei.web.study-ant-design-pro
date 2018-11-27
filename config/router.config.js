@@ -24,8 +24,8 @@ export default [
         icon: 'dashboard',
         component: '../layouts/UserLayout',
         routes: [
-          { 
-            path: '/formDemo/formDemo1', 
+          {
+            path: '/formDemo/formDemo1',
             name: 'Form Demo1',
             component: './formDemo1/formDemo1',
           },
