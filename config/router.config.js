@@ -18,19 +18,7 @@ export default [
     authority: ['admin', 'user'],
     routes: [
       // formDemo
-      {
-        path: '/formDemo',
-        name: 'Form Demo',
-        icon: 'dashboard',
-        component: '../layouts/UserLayout',
-        routes: [
-          {
-            path: '/formDemo/formDemo1',
-            name: 'Form Demo1',
-            component: './formDemo1/formDemo1',
-          },
-        ],
-      },
+
       
       {
         component: '404',
