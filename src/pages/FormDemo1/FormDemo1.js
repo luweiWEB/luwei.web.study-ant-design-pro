@@ -8,10 +8,16 @@ import {
   Row,
   Col,
   Card,
+  Modal,
 } from 'antd';
 
 @Form.create()
 class FormDemo1 extends PureComponent {
+
+  state = {
+    isShowEditModal: false, //  显示Modal
+  }
+
   handleSubmit = event => {
     event.preventDefault();
 
@@ -30,6 +36,28 @@ class FormDemo1 extends PureComponent {
     });
   };
 
+  handleAddClick = () => {
+    this.setState ({
+      isShowEditModal: true,
+    })
+  }
+
+  handleEditOkClick = () => {
+    console.log('点击确定');
+
+    this.setState ({
+      isShowEditModal: false,
+    })
+  }
+
+  handleEditCancelClick = () => {
+    console.log('点击取消');
+
+    this.setState ({
+      isShowEditModal: false,
+    })
+  }
+
   render() {
     const {
       form: { getFieldDecorator, getFieldValue },
@@ -37,8 +65,8 @@ class FormDemo1 extends PureComponent {
 
     const formItemLayout = {
       labelCol: {
-        xs: { span: 3 },
-        sm: { span: 5 },
+        xs: { span: 1 },
+        sm: { span: 3 },
       },
       wrapperCol: {
         xs: { span: 10 },
@@ -89,8 +117,26 @@ class FormDemo1 extends PureComponent {
               </Col>
             </Row>
           </Form>
+
+          <Row>
+            <Button type="primary" onClick={this.handleAddClick}>+ 新增</Button>
+          </Row>
     
+          <br/>
+          
           <Table dataSource={dataSource} columns={columns} />
+
+          <Modal
+            title="新增信息"
+            visible={this.state.isShowEditModal}
+            onOk={this.handleEditOkClick}
+            onCancel={this.handleEditCancelClick}
+          >
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+          </Modal>
+        
         </Card>
     );
   }
